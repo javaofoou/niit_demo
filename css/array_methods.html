@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods</title>
+</head>
+<body>
+    <div id="contentbox"></div>
+
+    <div id="filterbox">
+        <h1>Display Product Based On category</h1>
+    </div>
+    <script>
+     const products = [ 
+        {
+            id: 1,
+            name: "laptop",
+            price: 500000,
+            category: "Electronics"
+        },
+        {
+            id: 2,
+            name: "phone",
+            price: 300000,
+            category: "Electronics"
+        },
+        {
+            id: 3,
+            name: "shoe",
+            price: 80000,
+            category: "Fashion"
+        },
+        {
+            id: 4,
+            name: "watch",
+            price: 5000,
+            category: "Fashion"
+        },
+        {
+            id: 5,
+            name: "Headset",
+            price: 10000,
+            category: "Electronics"
+        }
+     ]; 
+     
+
+     let contentBox = document.getElementById('contentbox');
+     let output = "";
+     let filterbox = document.getElementById('filterbox');
+     let filterOutput = "";
+
+     products.forEach(x=>{
+           output +=`
+              <div class='name'>${x.name}</div>
+              <p class='price'>${x.price}</p>
+              <h2 class='category'>${x.category}</h2>
+           `;
+     });
+     
+     //map function:
+     //map used to transform every array items into  a new array.
+     const productnames = products.map(y=> y.name);
+     document.write(productnames);
+
+     contentbox.innerHTML = output;
+
+
+     //filter method:
+    //  Filter method is used to select items of an array that match a spefic condition
+
+    const electronics = products.filter(product => {return product.category === 'Electronics'
+                                        });
+
+        electronics.forEach(x=>{
+                filterOutput +=`
+              <div class='name'>${x.name}</div>
+              <p class='price'>${x.price}</p>
+              <h2 class='category'>${x.category}</h2>
+           `;
+        });
+
+        filterbox.innerHTML = filterOutput;
+
+
+        //find method returns first items that matched a condition.
+         const productFind = products.find(product  =>{
+            return product.name === 'shoe';
+         });
+
+         console.log(productFind);
+
+
+    </script>
+</body>
+</html>
